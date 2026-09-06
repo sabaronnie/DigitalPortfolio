@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ronnie Saba — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233A;
+    --ink-soft:#2C3A52;
+    --paper:#ECEEE9;
+    --paper-raised:#F5F6F2;
+    --line:#C7CDC3;
+    --line-soft:#D8DCD3;
+    --blue:#2F6FA6;
+    --blue-deep:#1F5384;
+    --copper:#C97A3D;
+    --copper-deep:#9A5A28;
+    --text:#1B2430;
+    --text-soft:#5B6570;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --sans:'IBM Plex Sans', system-ui, sans-serif;
+    --maxw:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:32px 32px;
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background:var(--copper); color:#fff; }
+
+  a{ color:var(--blue-deep); }
+
+  h1,h2,h3{
+    font-family:var(--mono);
+    font-weight:500;
+    color:var(--ink);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+
+  p{ margin:0; color:var(--text); }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(236,238,233,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 28px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-mark{
+    font-family:var(--mono);
+    font-weight:600;
+    font-size:15px;
+    color:var(--ink);
+    text-decoration:none;
+    border:1px solid var(--ink);
+    padding:3px 8px;
+    line-height:1;
+  }
+  .nav-links{
+    display:flex;
+    gap:24px;
+    list-style:none;
+    margin:0; padding:0;
+  }
+  .nav-links a{
+    font-family:var(--mono);
+    font-size:13px;
+    text-decoration:none;
+    color:var(--text-soft);
+    transition:color .15s ease;
+  }
+  .nav-links a:hover{ color:var(--blue-deep); }
+  .nav-toggle{ display:none; }
+
+  @media (max-width:640px){
+    .nav-links{ gap:14px; }
+    .nav-links a{ font-size:12px; }
+  }
+
+  /* ---------- section scaffolding ---------- */
+  section{
+    padding:72px 0;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+    align-items:baseline;
+    margin-bottom:36px;
+  }
+  .section-ref{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--copper-deep);
+    border-top:1px solid var(--copper);
+    padding-top:6px;
+  }
+  .section-title{
+    font-size:26px;
+  }
+  @media (max-width:600px){
+    .section-head{ grid-template-columns:44px 1fr; }
+    .section-title{ font-size:22px; }
+  }
+
+  .body-col{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+  }
+  @media (max-width:600px){
+    .body-col{ grid-template-columns:44px 1fr; }
+  }
+  .body-col > .rail{
+    border-left:1px solid var(--line);
+    height:100%;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:64px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:760px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-diagram{ order:-1; }
+  }
+  .eyebrow-tag{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--blue-deep);
+    display:inline-block;
+    border:1px solid var(--blue);
+    padding:3px 8px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(32px, 5vw, 48px);
+    line-height:1.12;
+    margin-bottom:18px;
+  }
+  .hero h1 span{ color:var(--blue-deep); }
+  .hero-lede{
+    font-size:17px;
+    color:var(--text-soft);
+    max-width:46ch;
+    margin-bottom:28px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    display:inline-block;
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn.primary{
+    background:var(--ink);
+    color:var(--paper-raised);
+  }
+  .btn.primary:hover{ background:var(--blue-deep); border-color:var(--blue-deep); }
+  .btn:not(.primary):hover{ background:var(--ink); color:var(--paper-raised); }
+
+  .hero-diagram{ width:100%; }
+  .hero-diagram svg{ width:100%; height:auto; display:block; }
+
+  .node-label{
+    font-family:var(--mono);
+    font-size:10.5px;
+    fill:var(--text-soft);
+  }
+  .node-dot{ fill:var(--paper-raised); stroke:var(--blue); stroke-width:1.4; }
+  .node-dot.core{ stroke:var(--copper); fill:var(--ink); }
+  .wire{
+    fill:none; stroke:var(--blue); stroke-width:1.2; opacity:.75;
+    stroke-dasharray:220; stroke-dashoffset:220;
+    animation:draw 1.6s ease forwards;
+  }
+  .wire:nth-of-type(2){ animation-delay:.15s; }
+  .wire:nth-of-type(3){ animation-delay:.3s; }
+  .wire:nth-of-type(4){ animation-delay:.45s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .wire{ animation:none; stroke-dashoffset:0; }
+  }
+
+  /* ---------- about ---------- */
+  .about-text{ max-width:64ch; }
+  .about-text p + p{ margin-top:16px; }
+  .about-text p{ font-size:16px; }
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:32px;
+  }
+  .stat{
+    background:var(--paper-raised);
+    padding:18px 16px;
+  }
+  .stat-num{
+    font-family:var(--mono);
+    font-size:22px;
+    color:var(--ink);
+  }
+  .stat-label{
+    font-size:12.5px;
+    color:var(--text-soft);
+    margin-top:4px;
+  }
+  @media (max-width:560px){
+    .stat-strip{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- education / experience timeline ---------- */
+  .entry{
+    padding-bottom:36px;
+    margin-bottom:36px;
+    border-bottom:1px dashed var(--line);
+  }
+  .entry:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .entry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .entry-org{ font-size:18px; font-weight:600; color:var(--ink); font-family:var(--sans); }
+  .entry-date{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--copper-deep);
+    white-space:nowrap;
+  }
+  .entry-role{
+    font-size:14.5px;
+    color:var(--blue-deep);
+    margin-bottom:10px;
+    font-weight:500;
+  }
+  .entry ul{
+    margin:10px 0 0;
+    padding-left:18px;
+    color:var(--text);
+  }
+  .entry li{ margin-bottom:6px; font-size:15px; }
+  .entry-meta{
+    font-size:13px;
+    color:var(--text-soft);
+    margin-top:4px;
+  }
+  .coursework{
+    margin-top:12px;
+    font-size:13.5px;
+    color:var(--text-soft);
+    line-height:1.7;
+  }
+  .coursework b{ color:var(--text); font-weight:500; }
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:28px 40px;
+  }
+  @media (max-width:600px){ .skills-grid{ grid-template-columns:1fr; } }
+  .skill-group h3{
+    font-size:14px;
+    color:var(--blue-deep);
+    margin-bottom:12px;
+    font-weight:500;
+  }
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-family:var(--mono);
+    font-size:12.5px;
+    padding:5px 10px;
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    color:var(--text);
+  }
+
+  /* ---------- projects ---------- */
+  .proj-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:700px){ .proj-grid{ grid-template-columns:1fr; } }
+  .proj-card{
+    background:var(--paper-raised);
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .proj-title{
+    font-size:16px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:8px;
+  }
+  .proj-desc{
+    font-size:14.5px;
+    color:var(--text-soft);
+    flex:1;
+    margin-bottom:14px;
+  }
+  .proj-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .proj-tag{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--blue-deep);
+    border:1px solid var(--blue);
+    padding:2px 7px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+  }
+  @media (max-width:600px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-card{
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+    color:var(--text);
+    transition:border-color .15s ease;
+  }
+  .contact-card:hover{ border-color:var(--blue); }
+  .contact-icon{
+    width:36px; height:36px;
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--ink);
+    color:var(--ink);
+  }
+  .contact-label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-soft);
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+  .contact-value{ font-size:15px; margin-top:2px; }
+
+  footer{
+    padding:32px 0;
+    text-align:center;
+  }
+  footer p{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--text-soft);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-mark">RS</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow-tag">Beirut, Lebanon</span>
+      <h1>Ronnie Saba</h1>
+      <p class="hero-lede">Computer and Communications Engineering student with a growing focus on cybersecurity and artificial intelligence. I'm interested in the overlap between the two — using ML to spot and reason about threats rather than just react to them, and thinking about how the AI systems being built today can be attacked, defended, and made harder to fool.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn primary">View projects</a>
+        <a href="#contact" class="btn">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-diagram">
+      <svg viewBox="0 0 380 320" role="img" aria-label="Schematic diagram connecting Ronnie's core disciplines: software, systems, machine learning, and security">
+        <path class="wire" d="M190,160 L100,90"/>
+        <path class="wire" d="M190,160 L290,90"/>
+        <path class="wire" d="M190,160 L100,230"/>
+        <path class="wire" d="M190,160 L290,230"/>
+        <circle class="node-dot core" cx="190" cy="160" r="20"/>
+        <text x="190" y="164" text-anchor="middle" class="node-label" fill="#F5F6F2" font-size="11">RS</text>
+        <circle class="node-dot" cx="100" cy="90" r="14"/>
+        <text x="100" y="68" text-anchor="middle" class="node-label">SOFTWARE</text>
+        <circle class="node-dot" cx="290" cy="90" r="14"/>
+        <text x="290" y="68" text-anchor="middle" class="node-label">ML / AI</text>
+        <circle class="node-dot" cx="100" cy="230" r="14"/>
+        <text x="100" y="256" text-anchor="middle" class="node-label">SYSTEMS</text>
+        <circle class="node-dot" cx="290" cy="230" r="14"/>
+        <text x="290" y="256" text-anchor="middle" class="node-label">SECURITY</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="body-col">
+      <div class="rail"></div>
+      <div class="about-text">
+        <p>I'm a Computer and Communications Engineering student at the American University of Beirut. Most recently, that meant interning at Murex, where I worked on MX.3, their production trading and risk platform, as part of the Global DEV team.</p>
+        <p>Outside of coursework, I do machine learning research — a medical imaging pipeline for spinal MRI analysis and an OECT-based sensor for cancer detection — and some offensive security work through Windows AD and Linux CTFs. I like projects that force me to learn a new tool or codebase fast and that have real world impact.</p>
+      </div>
+    </div>
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-num">3.8 / 4.0</div>
+        <div class="stat-label">GPA at AUB</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">11 wks</div>
+        <div class="stat-label">Shipping production code at Murex</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.02</span>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="body-col">
+      <div class="rail"></div>
+      <div>
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-org">American University of Beirut</span>
+            <span class="entry-date">08/2023 — 05/2027 (expected)</span>
+          </div>
+          <div class="entry-role">BE, Computer and Communications Engineering — GPA 3.8/4.0</div>
+          <div class="coursework"><b>Coursework:</b> Applied Machine Learning, AI Engineering &amp; Production, Cryptography &amp; Network Security, Data Structures &amp; Algorithm Analysis, Operating Systems, Computer Architecture, Computer Systems &amp; Networks, Object-Oriented Design, Software Engineering.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-org">Sagesse High School</span>
+            <span class="entry-date">Graduated 2023</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.03</span>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="body-col">
+      <div class="rail"></div>
+      <div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-org">Murex</span>
+            <span class="entry-date">Jun — Aug 2026</span>
+          </div>
+          <div class="entry-role">Software Engineering Intern, Global DEV Team · Beirut</div>
+          <p class="entry-meta">Contributed directly to MX.3, Murex's production trading and risk-management platform, working in two-week Agile sprints with daily standups. Served as Scrum Master for two sprints, running standups and presenting sprint statistics.</p>
+          <ul>
+            <li>Migrated legacy UI screens from a monolithic switch-statement event handler to a modular, one-handler-per-event framework, working around a change in how the screen refreshed after data updates.</li>
+            <li>Migrated 21 custom-built legacy container structures to modern C++ STL equivalents (vectors, sets, unordered maps) across the codebase, reverse-engineering undocumented runtime behavior along the way.</li>
+            <li>Designed and built a reusable LockAPI from scratch, offering timeout- and retry-based acquisition policies across three levels of abstraction, using <code>std::variant</code> to enforce explicit policy selection.</li>
+            <li>Shipped a client-requested "Break Clause Type" field in Murex's dynamic reporting tables, tracing the data model end-to-end and coordinating with QA and the requesting department to verify and release it.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <span class="entry-org">American University of Beirut</span>
+            <span class="entry-date">09/2025 — 05/2026</span>
+          </div>
+          <div class="entry-role">Undergraduate Researcher — Virtually Integrated Project, ML-Based OECT Cancer Cell Detection</div>
+          <ul>
+            <li>Designed and simulated an AI-integrated Organic Electrochemical Transistor (OECT) to generate impedance data for tumor detection.</li>
+            <li>Developed equivalent-circuit models to extract cell parameters and derive machine-learning features from impedance spectra.</li>
+            <li>Implemented machine-learning pipelines for supervised classification of healthy versus cancerous cells.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.04</span>
+      <h2 class="section-title">Skills &amp; abilities</h2>
+    </div>
+    <div class="body-col">
+      <div class="rail"></div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <div class="chip-row">
+            <span class="chip">Python</span><span class="chip">C++</span><span class="chip">Java</span>
+            <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">React</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Systems &amp; tools</h3>
+          <div class="chip-row">
+            <span class="chip">Flask</span><span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">MongoDB</span>
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">AWS</span><span class="chip">Git</span>
+            <span class="chip">Linux</span><span class="chip">Bash</span><span class="chip">PowerShell</span><span class="chip">Wireshark</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Data &amp; ML</h3>
+          <div class="chip-row">
+            <span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">pandas</span>
+            <span class="chip">NumPy</span><span class="chip">matplotlib</span><span class="chip">MATLAB</span>
+            <span class="chip">Signal Processing</span><span class="chip">MLOps</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="chip-row">
+            <span class="chip">English — fluent</span><span class="chip">Arabic — fluent</span><span class="chip">French — conversational</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.05</span>
+      <h2 class="section-title">Notable projects</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-title">Cervical spine MRI morphometry &amp; degeneration analysis</div>
+        <p class="proj-desc">Built and deployed a medical imaging pipeline that analyzes cervical spine MRI scans, extracting vertebral and disc measurements from segmentation masks to generate automated Pfirrmann degeneration grading and structured medical reports.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span class="proj-tag">AWS</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Veritas — misinformation detection platform</div>
+        <p class="proj-desc">Full-stack platform that flags misinformation in real time across Lebanese media, using NER, semantic similarity, and event extraction to decompose news into verifiable claims and expose contradictions across sources.</p>
+        <div class="proj-tags"><span class="proj-tag">Flask</span><span class="proj-tag">PyTorch</span><span class="proj-tag">JS</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Explainable concept drift for HVAC cyber-attacks</div>
+        <p class="proj-desc">Extended a CNN-autoencoder pipeline for feature-level drift localization in time-series data, increasing the temporal kernel size to improve detection accuracy under complex drift scenarios by 80%.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Pipelined datapath for GRAND</div>
+        <p class="proj-desc">Simulated a multi-stage pipeline for the GRAND error-correcting decoder, optimizing instruction-level parallelism for a 1.28× performance speedup over the non-pipelined baseline.</p>
+        <div class="proj-tags"><span class="proj-tag">RISC-V ASM</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Conut retail intelligence — AI ops hackathon</div>
+        <p class="proj-desc">Built in a 12-hour hackathon: an AI system analyzing multi-branch retail transactions for demand forecasting, combo optimization, and shift staffing, with decision agents converting predictions into recommendations.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">OpenClaw</span></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-title">Capture the flag — Windows AD &amp; Linux</div>
+        <p class="proj-desc">Ran recon, enumeration, credential abuse, lateral movement, and privilege escalation across Windows AD and Linux boxes, exploiting misconfigurations and AD delegation weaknesses.</p>
+        <div class="proj-tags"><span class="proj-tag">BloodHound</span><span class="proj-tag">Burp Suite</span><span class="proj-tag">Metasploit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.06</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:sabawronnie@gmail.com">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">sabawronnie@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-card" href="tel:+96171879756">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l4-1 2 5-2 1a12 12 0 006 6l1-2 5 2-1 4a2 2 0 01-2 1A17 17 0 013 6a2 2 0 011-2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">+961 71 879 756</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://linkedin.com/in/ronniewsaba" target="_blank" rel="noopener">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c0-1.2 1-2 2.3-2 1.3 0 1.7 1 1.7 2v5"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">ronniewsaba</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://github.com/sabaronnie" target="_blank" rel="noopener">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 00-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.35-3.37-1.35-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.9-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">sabaronnie</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Ronnie Saba · Beirut, Lebanon</p>
+</footer>
+
+</body>
+</html>
