@@ -3,435 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ronnie Saba — Portfolio</title>
+<title>Ronnie Saba | Computer Engineering Portfolio</title>
+<meta name="description" content="Ronnie Saba’s engineering portfolio: Arabic calligraphy robotics, machine learning, software engineering at Murex, and reflections on learning at AUB.">
+<meta name="theme-color" content="#16233A">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --ink:#16233A;
-    --ink-soft:#2C3A52;
-    --paper:#ECEEE9;
-    --paper-raised:#F5F6F2;
-    --line:#C7CDC3;
-    --line-soft:#D8DCD3;
-    --blue:#2F6FA6;
-    --blue-deep:#1F5384;
-    --copper:#C97A3D;
-    --copper-deep:#9A5A28;
-    --text:#1B2430;
-    --text-soft:#5B6570;
-    --mono:'IBM Plex Mono', ui-monospace, monospace;
-    --sans:'IBM Plex Sans', system-ui, sans-serif;
-    --maxw:920px;
-  }
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    background-image:
-      linear-gradient(var(--line-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size:32px 32px;
-    color:var(--text);
-    font-family:var(--sans);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  ::selection{ background:var(--copper); color:#fff; }
-
-  a{ color:var(--blue-deep); }
-
-  h1,h2,h3{
-    font-family:var(--mono);
-    font-weight:500;
-    color:var(--ink);
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-
-  p{ margin:0; color:var(--text); }
-
-  .wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:0 28px;
-  }
-
-  /* ---------- nav ---------- */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(236,238,233,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:16px 28px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .nav-mark{
-    font-family:var(--mono);
-    font-weight:600;
-    font-size:15px;
-    color:var(--ink);
-    text-decoration:none;
-    border:1px solid var(--ink);
-    padding:3px 8px;
-    line-height:1;
-  }
-  .nav-links{
-    display:flex;
-    gap:24px;
-    list-style:none;
-    margin:0; padding:0;
-  }
-  .nav-links a{
-    font-family:var(--mono);
-    font-size:13px;
-    text-decoration:none;
-    color:var(--text-soft);
-    transition:color .15s ease;
-  }
-  .nav-links a:hover{ color:var(--blue-deep); }
-  .nav-toggle{ display:none; }
-
-  @media (max-width:640px){
-    .nav-links{ gap:14px; }
-    .nav-links a{ font-size:12px; }
-  }
-
-  /* ---------- section scaffolding ---------- */
-  section{
-    padding:72px 0;
-    border-bottom:1px solid var(--line);
-    position:relative;
-  }
-  section:last-of-type{ border-bottom:none; }
-
-  .section-head{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:16px;
-    align-items:baseline;
-    margin-bottom:36px;
-  }
-  .section-ref{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--copper-deep);
-    border-top:1px solid var(--copper);
-    padding-top:6px;
-  }
-  .section-title{
-    font-size:26px;
-  }
-  @media (max-width:600px){
-    .section-head{ grid-template-columns:44px 1fr; }
-    .section-title{ font-size:22px; }
-  }
-
-  .body-col{
-    display:grid;
-    grid-template-columns:64px 1fr;
-    gap:16px;
-  }
-  @media (max-width:600px){
-    .body-col{ grid-template-columns:44px 1fr; }
-  }
-  .body-col > .rail{
-    border-left:1px solid var(--line);
-    height:100%;
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    padding:64px 0 56px;
-    border-bottom:1px solid var(--line);
-  }
-  .hero-grid{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:40px;
-    align-items:center;
-  }
-  @media (max-width:760px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .hero-diagram{ order:-1; }
-  }
-  .eyebrow-tag{
-    font-family:var(--mono);
-    font-size:12.5px;
-    color:var(--blue-deep);
-    display:inline-block;
-    border:1px solid var(--blue);
-    padding:3px 8px;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:clamp(32px, 5vw, 48px);
-    line-height:1.12;
-    margin-bottom:18px;
-  }
-  .hero h1 span{ color:var(--blue-deep); }
-  .hero-lede{
-    font-size:17px;
-    color:var(--text-soft);
-    max-width:46ch;
-    margin-bottom:28px;
-  }
-  .hero-actions{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    font-family:var(--mono);
-    font-size:13px;
-    text-decoration:none;
-    padding:10px 16px;
-    border:1px solid var(--ink);
-    color:var(--ink);
-    display:inline-block;
-    transition:background .15s ease, color .15s ease;
-  }
-  .btn.primary{
-    background:var(--ink);
-    color:var(--paper-raised);
-  }
-  .btn.primary:hover{ background:var(--blue-deep); border-color:var(--blue-deep); }
-  .btn:not(.primary):hover{ background:var(--ink); color:var(--paper-raised); }
-
-  .hero-diagram{ width:100%; }
-  .hero-diagram svg{ width:100%; height:auto; display:block; }
-
-  .node-label{
-    font-family:var(--mono);
-    font-size:10.5px;
-    fill:var(--text-soft);
-  }
-  .node-dot{ fill:var(--paper-raised); stroke:var(--blue); stroke-width:1.4; }
-  .node-dot.core{ stroke:var(--copper); fill:var(--ink); }
-  .wire{
-    fill:none; stroke:var(--blue); stroke-width:1.2; opacity:.75;
-    stroke-dasharray:220; stroke-dashoffset:220;
-    animation:draw 1.6s ease forwards;
-  }
-  .wire:nth-of-type(2){ animation-delay:.15s; }
-  .wire:nth-of-type(3){ animation-delay:.3s; }
-  .wire:nth-of-type(4){ animation-delay:.45s; }
-  @keyframes draw{ to{ stroke-dashoffset:0; } }
-  @media (prefers-reduced-motion: reduce){
-    .wire{ animation:none; stroke-dashoffset:0; }
-  }
-
-  /* ---------- about ---------- */
-  .about-text{ max-width:64ch; }
-  .about-text p + p{ margin-top:16px; }
-  .about-text p{ font-size:16px; }
-  .stat-strip{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    margin-top:32px;
-  }
-  .stat{
-    background:var(--paper-raised);
-    padding:18px 16px;
-  }
-  .stat-num{
-    font-family:var(--mono);
-    font-size:22px;
-    color:var(--ink);
-  }
-  .stat-label{
-    font-size:12.5px;
-    color:var(--text-soft);
-    margin-top:4px;
-  }
-  @media (max-width:560px){
-    .stat-strip{ grid-template-columns:1fr; }
-  }
-
-  /* ---------- education / experience timeline ---------- */
-  .entry{
-    padding-bottom:36px;
-    margin-bottom:36px;
-    border-bottom:1px dashed var(--line);
-  }
-  .entry:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
-  .entry-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    gap:16px;
-    flex-wrap:wrap;
-    margin-bottom:6px;
-  }
-  .entry-org{ font-size:18px; font-weight:600; color:var(--ink); font-family:var(--sans); }
-  .entry-date{
-    font-family:var(--mono);
-    font-size:12.5px;
-    color:var(--copper-deep);
-    white-space:nowrap;
-  }
-  .entry-role{
-    font-size:14.5px;
-    color:var(--blue-deep);
-    margin-bottom:10px;
-    font-weight:500;
-  }
-  .entry ul{
-    margin:10px 0 0;
-    padding-left:18px;
-    color:var(--text);
-  }
-  .entry li{ margin-bottom:6px; font-size:15px; }
-  .entry-meta{
-    font-size:13px;
-    color:var(--text-soft);
-    margin-top:4px;
-  }
-  .coursework{
-    margin-top:12px;
-    font-size:13.5px;
-    color:var(--text-soft);
-    line-height:1.7;
-  }
-  .coursework b{ color:var(--text); font-weight:500; }
-
-  /* ---------- skills ---------- */
-  .skills-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:28px 40px;
-  }
-  @media (max-width:600px){ .skills-grid{ grid-template-columns:1fr; } }
-  .skill-group h3{
-    font-size:14px;
-    color:var(--blue-deep);
-    margin-bottom:12px;
-    font-weight:500;
-  }
-  .chip-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .chip{
-    font-family:var(--mono);
-    font-size:12.5px;
-    padding:5px 10px;
-    border:1px solid var(--line);
-    background:var(--paper-raised);
-    color:var(--text);
-  }
-
-  /* ---------- projects ---------- */
-  .proj-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-  }
-  @media (max-width:700px){ .proj-grid{ grid-template-columns:1fr; } }
-  .proj-card{
-    background:var(--paper-raised);
-    padding:24px;
-    display:flex;
-    flex-direction:column;
-  }
-  .proj-title{
-    font-size:16px;
-    font-weight:600;
-    color:var(--ink);
-    margin-bottom:8px;
-  }
-  .proj-desc{
-    font-size:14.5px;
-    color:var(--text-soft);
-    flex:1;
-    margin-bottom:14px;
-  }
-  .proj-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px;
-  }
-  .proj-tag{
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--blue-deep);
-    border:1px solid var(--blue);
-    padding:2px 7px;
-  }
-
-  /* ---------- contact ---------- */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-  }
-  @media (max-width:600px){ .contact-grid{ grid-template-columns:1fr; } }
-  .contact-card{
-    border:1px solid var(--line);
-    background:var(--paper-raised);
-    padding:20px;
-    display:flex;
-    align-items:center;
-    gap:14px;
-    text-decoration:none;
-    color:var(--text);
-    transition:border-color .15s ease;
-  }
-  .contact-card:hover{ border-color:var(--blue); }
-  .contact-icon{
-    width:36px; height:36px;
-    flex-shrink:0;
-    display:flex; align-items:center; justify-content:center;
-    border:1px solid var(--ink);
-    color:var(--ink);
-  }
-  .contact-label{
-    font-family:var(--mono);
-    font-size:11px;
-    color:var(--text-soft);
-    text-transform:uppercase;
-    letter-spacing:.03em;
-  }
-  .contact-value{ font-size:15px; margin-top:2px; }
-
-  footer{
-    padding:32px 0;
-    text-align:center;
-  }
-  footer p{
-    font-family:var(--mono);
-    font-size:12px;
-    color:var(--text-soft);
-  }
-</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<nav>
+<nav aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="#top" class="nav-mark">RS</a>
-    <ul class="nav-links">
+    <a href="#top" class="nav-mark" aria-label="Ronnie Saba, back to top">RS</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
       <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#fyp">FYP</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education &amp; Skills</a></li>
+      <li><a href="#highlights">Highlights</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -444,9 +39,10 @@
     <div>
       <span class="eyebrow-tag">Beirut, Lebanon</span>
       <h1>Ronnie Saba</h1>
-      <p class="hero-lede">Computer and Communications Engineering student with a growing focus on cybersecurity and artificial intelligence. I'm interested in the overlap between the two — using ML to spot and reason about threats rather than just react to them, and thinking about how the AI systems being built today can be attacked, defended, and made harder to fool.</p>
+      <p class="hero-lede">I’m a Computer and Communications Engineering student at the American University of Beirut, with a particular interest in the intersection of AI and cybersecurity. I build AI systems for practical problems in healthcare, robotics, and beyond, while exploring how to make them reliable and secure.</p>
       <div class="hero-actions">
-        <a href="#projects" class="btn primary">View projects</a>
+        <a href="#fyp" class="btn primary">Explore my FYP</a>
+        <a href="#projects" class="btn">View projects</a>
         <a href="#contact" class="btn">Get in touch</a>
       </div>
     </div>
@@ -457,7 +53,7 @@
         <path class="wire" d="M190,160 L100,230"/>
         <path class="wire" d="M190,160 L290,230"/>
         <circle class="node-dot core" cx="190" cy="160" r="20"/>
-        <text x="190" y="164" text-anchor="middle" class="node-label" fill="#F5F6F2" font-size="11">RS</text>
+        <text x="190" y="164" text-anchor="middle" class="node-label core-label">RS</text>
         <circle class="node-dot" cx="100" cy="90" r="14"/>
         <text x="100" y="68" text-anchor="middle" class="node-label">SOFTWARE</text>
         <circle class="node-dot" cx="290" cy="90" r="14"/>
@@ -471,17 +67,19 @@
   </div>
 </header>
 
-<section id="about">
+<main id="main">
+<section id="about" aria-labelledby="about-title">
   <div class="wrap">
     <div class="section-head">
       <span class="section-ref">FIG.01</span>
-      <h2 class="section-title">About</h2>
+      <h2 class="section-title" id="about-title">About</h2>
     </div>
     <div class="body-col">
       <div class="rail"></div>
       <div class="about-text">
-        <p>I'm a Computer and Communications Engineering student at the American University of Beirut. Most recently, that meant interning at Murex, where I worked on MX.3, their production trading and risk platform, as part of the Global DEV team.</p>
-        <p>Outside of coursework, I do machine learning research — a medical imaging pipeline for spinal MRI analysis and an OECT-based sensor for cancer detection — and some offensive security work through Windows AD and Linux CTFs. I like projects that force me to learn a new tool or codebase fast and that have real world impact.</p>
+        <p>My interests lie at the intersection of artificial intelligence and cybersecurity. I want to use machine learning to understand security threats and explore how AI systems can be attacked, defended, and made more resilient.</p>
+        <p>I also enjoy building AI systems that address practical problems in healthcare, robotics, and business operations. My projects range from analyzing spinal MRI scans and modeling biological sensors to reconstructing Arabic calligraphy for robotic writing. Across these applications, I care about how a model’s output becomes something people can understand and use.</p>
+        <p>As a Computer and Communications Engineering student at the American University of Beirut, I’m developing these interests through research, hands-on security labs, and software engineering work at Murex. I want to bring that experience into building AI systems that are useful, dependable, and secure.</p>
       </div>
     </div>
     <div class="stat-strip">
@@ -491,17 +89,302 @@
       </div>
       <div class="stat">
         <div class="stat-num">11 wks</div>
-        <div class="stat-label">Shipping production code at Murex</div>
+        <div class="stat-label">Software engineering internship at Murex</div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="education">
+<section id="internship" aria-labelledby="internship-title">
+  <span id="experience" class="anchor-alias" aria-hidden="true"></span>
   <div class="wrap">
     <div class="section-head">
       <span class="section-ref">FIG.02</span>
-      <h2 class="section-title">Education</h2>
+      <h2 class="section-title" id="internship-title">Experience</h2>
+    </div>
+    <div class="body-col">
+      <div class="rail"></div>
+      <div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <h3 class="entry-org">Murex</h3>
+            <span class="entry-date">7 Oct 2026 – Present</span>
+          </div>
+          <div class="entry-role">Part-time role · Contract computation performance</div>
+          <p>Working on performance optimization for a key contract-computation flow. The work is in progress.</p>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <h3 class="entry-org">Murex</h3>
+            <span class="entry-date">8 Jun – 21 Aug 2026</span>
+          </div>
+          <div class="entry-role">Software Engineering Intern, Global DEV · Beirut</div>
+          <p class="entry-meta">Contributed directly to MX.3, Murex's production trading and risk-management platform, working in two-week Agile sprints with daily standups. Served as Scrum Master for two sprints, running standups and presenting sprint statistics.</p>
+          <ul>
+            <li>Migrated legacy UI screens from a monolithic switch-statement event handler to a modular, one-handler-per-event framework, working around a change in how the screen refreshed after data updates.</li>
+            <li>Worked on a modernization effort covering 21 legacy container structures, replacing custom implementations with C++ Standard Library equivalents. Traced runtime settings to preserve each container’s intended behavior.</li>
+            <li>Designed a reusable LockAPI with timeout and retry policies across three levels of abstraction. Used <code>std::variant</code> to make the caller’s policy choice explicit.</li>
+            <li>Implemented a client-requested “Break Clause Type” field in dynamic reporting tables. Traced the data model and coordinated with the requesting department and QA to verify the displayed values.</li>
+          </ul>
+        </div>
+
+<details class="inline-details" id="murex-details">
+<summary aria-label="Explore this experience: Murex internship">Explore this experience</summary>
+<div class="details-content">  <h4>Case 1: preserving behavior during a UI migration</h4>
+  <p>The older framework routed screen events through one large switch statement. I migrated screens to specialized handlers for individual events. The main challenge was understanding behavior that the old framework had supplied implicitly.</p>
+  <p>For example, changing the data automatically refreshed the old screen. The newer framework required an explicit refresh. Tracing why the screen stayed unchanged helped me find the missing refresh step. I learned to follow a change all the way to what appears on screen, rather than assuming that updated data means the feature works.</p>
+  <h4>Case 2: modernizing containers</h4>
+  <p>The modernization effort covered a backlog of 21 legacy container structures. Selecting a Standard Library replacement required understanding each use and its runtime flags. A container’s shape in the source did not fully describe its behavior.</p>
+  <p>I investigated the intended access and uniqueness rules before choosing replacements such as vectors, sets, and unordered maps. Debugging these changes taught me that replacing a small piece of code can affect other parts of the system. I learned to check those connections before deciding a change is complete.</p>
+  <h4>Case 3: designing the LockAPI</h4>
+  <p>I designed a reusable interface to standardize lock acquisition. Callers select a timeout or retry policy explicitly through a C++ <code>std::variant</code>. As I applied the API to different call sites, the design expanded to accommodate three levels of control.</p>
+  <figure class="evidence-figure internship-figure policy-figure">
+    <a href="assets/internship/lock-acquisition-policies.png" target="_blank" rel="noopener noreferrer" aria-label="Open the full-size lock acquisition policy flowchart (opens in a new tab)"><img src="assets/internship/lock-acquisition-policies.png" width="1083" height="753" loading="lazy" alt="Lock acquisition flowchart: choose a timeout or retry policy, attempt acquisition, then return the acquired lock on success or nullptr on failure."></a>
+    <figcaption>The acquisition flow from my internship report. A timeout policy waits for a configured duration, while a retry policy limits the number of attempts. Both report whether acquisition succeeded.</figcaption>
+  </figure>
+  <div class="table-scroll" role="region" aria-label="LockAPI abstraction levels" tabindex="0"><table>
+    <caption>LockAPI abstraction levels</caption>
+    <thead><tr><th scope="col">Interface level</th><th scope="col">Responsibility</th></tr></thead>
+    <tbody><tr><th scope="row">Execute with a lock</th><td class="prose-cell">Acquire the lock, execute the protected logic, and release the lock.</td></tr><tr><th scope="row">Acquire a lock</th><td class="prose-cell">Apply the selected acquisition policy. The caller handles the protected work and release.</td></tr><tr><th scope="row">Build a lock object</th><td class="prose-cell">Provide the object while leaving the workflow under caller control.</td></tr></tbody>
+  </table></div>
+  <h4>Case 4: a reporting field requested by a client</h4>
+  <p>I added a “Break Clause Type” field to dynamic reporting tables, allowing users to work with information that previously required opening individual trades. I traced the existing data access and field-registration mechanisms, then coordinated checks with the requesting department and QA.</p>
+
+</div>
+</details>
+        <div class="reflection">
+          <h3>What I learned at Murex</h3>
+          <p>My Data Structures &amp; Algorithm Analysis course taught me to choose data structures based on their behavior and the operations they need to support. I applied this at Murex when deciding whether vectors, sets, or maps could replace legacy containers while preserving their behavior.</p>
+          <p>My Object-Oriented Design course taught me to organize code around clear interfaces. I applied that idea when designing the LockAPI. My first version handled the whole locking process automatically, but existing code sometimes needed more control. Expanding it to support three ways of using it taught me to explore different use cases before settling on a design.</p>
+          <p>The internship also taught me how carefully an existing system needs to be studied before changing it. During the screen migration, the data updated but the display did not. Finding the missing refresh step taught me to check what the user actually sees, even when the code runs successfully.</p>
+          <p>My Software Engineering course taught me how iterative development helps organize work and respond to changes. Serving as Scrum Master for two sprints gave me a chance to apply that approach and improve how I explained progress and raised problems. I’ll bring these habits into the FYP integration phase, where delays in one component can affect the rest.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fyp" aria-labelledby="fyp-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.03</span>
+      <h2 class="section-title" id="fyp-title">Final-year project</h2>
+    </div>
+    <article class="fyp-study">
+      <div class="fyp-heading">
+        <span class="status">In progress · 2026–2027</span>
+        <h3>Reconstructing Arabic calligraphy for robotic writing</h3>
+        <p class="fyp-lede">I’m developing a system that turns Arabic text and a requested calligraphic style into paths a robot can write with a broad-edged qalam.</p>
+        <p>The challenge goes beyond reproducing an image. Arabic letterforms change with joining context, and small dots or hooks can carry meaning. A writing robot needs ordered strokes, explicit pen lifts, and a calibrated relationship between the nib and the paper.</p>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Official title</dt><dd>Style-Conditioned Arabic Calligraphy Generation for Robotic Writing</dd></div>
+        <div><dt>Advisor</dt><dd>Dr. Mariette Awad · Electrical and Computer Engineering, AUB</dd></div>
+      </dl>
+      <figure class="evidence-figure">
+        <a href="assets/fyp/composition.png" aria-label="Open the full-size CALLIAR composition figure (opens in a new tab)" target="_blank" rel="noopener noreferrer"><img src="assets/fyp/composition.png" alt="A CALLIAR reference composition separated into five ordered strokes, alongside the 20 recorded points in its first stroke." width="1118" height="538" loading="lazy"></a>
+        <figcaption>A reference composition from <a href="https://github.com/ARBML/Calliar" target="_blank" rel="noopener noreferrer">CALLIAR</a>. Numbers show stroke order, dots mark starts, and dotted transfers estimate pen-up movement. These are recorded reference paths.</figcaption>
+      </figure>
+      <div class="metric-grid" aria-label="Selected experimental results">
+        <div><strong>2,500 strokes</strong><span>Matched geometry benchmark</span><p>100% passed the sampled reconstruction audit at a tolerance of 1% of composition extent.</p></div>
+        <div><strong>6.50×</strong><span>Median coordinate compression</span><p>Original point count divided by fitted control-point pairs at the same 1% setting.</p></div>
+        <div><strong>78.02%</strong><span>Six-style image classification</span><p>181 correct predictions on 232 held-out images. Test macro-F1: 0.7401.</p></div>
+      </div>
+<details class="inline-details" id="fyp-details">
+<summary aria-label="Explore this project: Arabic calligraphy for robotic writing">Explore this project</summary>
+<div class="details-content">      <div class="study-block">
+        <h4>Compact paths that preserve small details</h4>
+        <p>The geometry analysis covers 2,500 CALLIAR compositions containing 44,987 primitive strokes and 1,917,438 recorded points. Bézier curves provide a compact representation of the recorded points while preserving dot placement and stroke boundaries.</p>
+        <p>On a matched sample of 2,500 strokes, the improved fitter raised the sampled audit pass rate from 82.48% to 100% at the 1% setting and used about 10.9% fewer curve segments on average. The additional checks increased median processing time from 2.91 to 6.98 milliseconds per stroke in the recorded environment.</p>
+<div class="table-scroll" role="region" aria-label="Geometry benchmark comparison" tabindex="0"><table>
+    <caption>Matched sample of 2,500 strokes with at least eight recorded points · 1% tolerance</caption>
+    <thead><tr><th scope="col">Metric</th><th scope="col">Earlier fitter</th><th scope="col">Improved raw fitter</th></tr></thead>
+    <tbody><tr><th scope="row">Sampled audit pass rate</th><td>82.48%</td><td>100%</td></tr><tr><th scope="row">Average cubic segments per stroke</th><td>2.949</td><td>2.628</td></tr><tr><th scope="row">Median coordinate-pair compression</th><td>5.75×</td><td>6.50×</td></tr><tr><th scope="row">Median runtime including checks</th><td>2.91 ms</td><td>6.98 ms</td></tr></tbody>
+  </table></div>
+<ul>
+    <li><strong>Tolerance:</strong> 1% of the composition’s longest extent, expressed in normalized geometry.</li>
+    <li><strong>Sampled audit:</strong> an approximation to geometric distance in both directions between a fitted curve and the reference polyline. The check is part of the fitter’s acceptance process.</li>
+    <li><strong>Coordinate-pair compression:</strong> original recorded point count divided by fitted control-point pairs, counting shared endpoints once. This measures coordinate counts.</li>
+    <li><strong>Local-detail experiment:</strong> a separate 150-stroke sample. Capping tolerance at the smaller of 1% of composition extent and 2% of local stroke extent lowered the 95th-percentile stroke-relative error from 8.67% to 1.74%. Average segments increased from 2.64 to 4.03.</li>
+  </ul>
+        <figure class="evidence-figure">
+          <a href="assets/fyp/local-detail.png" aria-label="Open the full-size local detail comparison (opens in a new tab)" target="_blank" rel="noopener noreferrer"><img src="assets/fyp/local-detail.png" alt="Four stroke examples compare a tolerance based on the whole composition, in red, with a tighter local tolerance, in blue, that follows small hooks and corners more closely." width="1490" height="436" loading="lazy"></a>
+          <figcaption>Reconstruction experiments using CALLIAR reference strokes. A separate 150-stroke comparison lowered the 95th-percentile stroke-relative error from 8.67% to 1.74% with a local tolerance cap. The added detail required more segments and reduced median compression from 6.66× to 4.71×. Open the image for a closer view.</figcaption>
+        </figure>
+      </div>
+      <div class="study-block">
+        <h4>Recognizing six calligraphic styles</h4>
+        <p>The style-recognition study uses 1,252 single-style images from MBZUAI’s <a href="https://huggingface.co/datasets/MBZUAI/DuwatBench" target="_blank" rel="noopener noreferrer">DuwatBench</a> with related images grouped before division into training, validation, and test sets. This reduced known overlap between subsets. The labels cover Diwani, Kufic, Naskh, Nasta’liq, Ruq’ah, and Thuluth.</p>
+<p>The grouped split contains 825 training, 195 validation, and 232 test images across 582 related-image groups. Missing metadata limits the certainty of artist and collection separation. The selected model achieved 0.6798 validation macro-F1 and 73.18% mean per-style recall on the test set.</p>
+        <div class="table-scroll" role="region" aria-label="Style classification results, scroll horizontally if needed" tabindex="0">
+          <table>
+            <caption>Selected comparisons from the integrated run · Same 232-image test set</caption>
+            <thead><tr><th scope="col">Method</th><th scope="col">Accuracy</th><th scope="col">Macro-F1</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Majority-class baseline</th><td>52.59%</td><td>0.1149</td></tr>
+              <tr><th scope="row">Full image, frozen ResNet18 features</th><td>56.03%</td><td>0.5058</td></tr>
+              <tr><th scope="row">Annotated crop, frozen ResNet18 features</th><td>67.24%</td><td>0.5979</td></tr>
+              <tr class="selected-result"><th scope="row">Annotated crop, fine-tuned final block, balanced sampling &amp; augmentation</th><td>78.02%</td><td>0.7401</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="evidence-note">The frozen-feature models use logistic regression. The neural checkpoint was selected by validation macro-F1, an average that gives each style equal weight. The test set is small and imbalanced, and it was revisited during diagnosis. These results measure style recognition on this split.</p>
+        <p>Error analysis exposed a useful limitation: Naskh had 80.0% recall but only 45.7% precision, because the model assigned that label too often. A blur stress test reduced accuracy to 66.38%. These findings guide further validation before using the classifier to assess generated calligraphy.</p>
+      </div>
+      <div class="study-block">
+        <h4>The robot integration plan</h4>
+        <p>A comparison of five platforms led to a recommendation for the myCobot 280 in the November hardware proposal. Its six axes offer control over the qalam’s orientation as well as its position. Preliminary calibration software is ready for further testing, with procurement and physical validation still pending.</p>
+        <ol class="pipeline" aria-label="Planned system stages">
+          <li><strong>Text &amp; style</strong><span>Arabic input and an expert-reviewed style reference</span></li>
+          <li><strong>Stroke generation</strong><span>Ordered geometry with explicit pen states</span></li>
+          <li><strong>Motion planning</strong><span>Calibrated paper frame, tool offset, speeds, and lifts</span></li>
+          <li><strong>Physical writing</strong><span>Robot execution and independently measured output</span></li>
+        </ol>
+        <p class="evidence-note">Trajectory research, style classification, and hardware planning are the current deliverables. Learned text-to-stroke generation and integrated pen-on-paper writing remain future work. A 95th-percentile planar error of at most 1 mm on a 100 mm calibration pattern is a proposed physical acceptance target.</p>
+      </div>
+      <div class="study-block">
+        <h4>Progress &amp; next milestones</h4>
+        <ol class="milestones">
+          <li><span>Sep–Oct 2026</span><p>Scoped the system, researched datasets, benchmarked stroke reconstruction, and completed the fall progress report.</p></li>
+          <li><span>November 2026</span><p>Added style-recognition experiments and diagnostics, investigated stroke variants, and prepared the myCobot hardware proposal.</p></li>
+          <li><span>Next phase</span><p>Validate a short-word pilot in one reviewed style, develop the trajectory generator, and calibrate the writing setup.</p></li>
+          <li><span>Feb–Apr 2027 · Planned</span><p>Integrate the models with the robot in February–March, working toward an internal completion target of 11 April 2027.</p></li>
+        </ol>
+      </div>
+
+</div>
+</details>
+      <div class="reflection">
+        <h3>What I’m learning</h3>
+        <p>Working with Arabic calligraphy taught me to pay attention to small details. A reconstructed stroke can look accurate overall and still lose a dot, hook, or sharp turn that changes the writing. I learned to check those details alongside the overall shape.</p>
+        <p>My Introduction to Machine Learning course taught me to look at precision and recall alongside accuracy when evaluating a classifier. My Neural Networks course taught me how network design and training choices affect a model’s behavior. I applied these lessons when fine-tuning the style classifier and examining its mistakes for each calligraphic style. This helped me see where a good overall score could hide a tendency to assign one label too often.</p>
+        <p>Considering a reader’s perspective also changed how I judge the reconstructed writing. A dot or a small change in a letter can affect what someone reads, even when the overall curve looks close to the reference. This is why I want the planned expert review to assess readability and style alongside the geometric measurements.</p>
+        <p>The next step is to turn digital paths into physical writing. That means checking how the robot moves, lifts the pen, and touches the paper. I’ll use what I learned at Murex about connecting software components, then test each stage before assessing the finished writing.</p>
+      </div>
+      <div class="artifact-links fyp-links">
+        <a href="artifacts/fyp-progress-report.pdf" target="_blank" rel="noopener noreferrer" title="Opens in a new tab">Fall progress report (PDF)</a>
+        <a href="assets/fyp/fit-comparison.png" target="_blank" rel="noopener noreferrer" title="Opens in a new tab">Original benchmark figure</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.04</span>
+      <h2 class="section-title">Selected projects &amp; research</h2>
+    </div>
+    <p class="section-intro">These projects connect machine learning to practical problems. Expand any project to explore its methods and design decisions without leaving the page.</p>
+    <div class="proj-grid">
+      <article class="proj-card" id="mri" aria-labelledby="mri-title">
+        <p class="project-kind">AI engineering</p>
+        <h3 class="proj-title" id="mri-title">Cervical spine MRI analysis &amp; reporting</h3>
+        <p class="proj-desc">Helped build and deploy a pipeline that combines segmentation models with anatomical measurements and structured reports. The system flags findings for physician review, with validation that distinguishes useful measurements from signals that did not generalize.</p>
+        <p class="project-learning"><strong>What I learned:</strong> My AI Engineering &amp; Production course taught me to consider how an AI system’s outputs are checked and presented. The MRI project made that practical: a measurement can be correct without being useful for identifying disease, so I needed to test what each output could actually show.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span class="proj-tag">AWS / Kubernetes</span></div>
+        <div class="artifact-links"><a href="artifacts/mri-research-paper.pdf" target="_blank" rel="noopener noreferrer" title="Opens in a new tab">Research paper (PDF)</a></div>
+<details class="inline-details" id="mri-details">
+<summary aria-label="Explore this project: Cervical spine MRI analysis &amp; reporting">Explore this project</summary>
+<div class="details-content">
+  <p>AI Engineering course project · AUB</p>
+  <p>The pipeline takes a sagittal T2 cervical MRI and produces structured measurements and a report for physician review. It combines three segmentation engines with dedicated measurement, assessment, and reporting services.</p>
+  <ol class="pipeline"><li><strong>Input</strong><span>Validate DICOM or NIfTI data and coordinate service requests.</span></li><li><strong>Segmentation</strong><span>TotalSpineSeg, Spinal Cord Toolbox, and SPINEPS.</span></li><li><strong>Measurements</strong><span>Measure anatomy and assess values against cited thresholds.</span></li><li><strong>Report</strong><span>Present structured findings for physician review.</span></li></ol>
+  <h4>What I learned from testing</h4>
+  <p>Testing showed that some measurements were more useful than others. Canal and spinal-cord measurements helped distinguish the studied groups, while disc measurements gave more limited results. A measurement of spinal alignment could be accurate without helping identify disease.</p>
+  <p>I learned to ask two questions about an output: was it measured correctly, and what does it actually tell me? Keeping those questions separate helped me describe the system’s results more accurately.</p>
+  <h4>Considering the clinician’s perspective</h4>
+  <p>I also considered how a clinician would use the report. A number is more useful when its meaning and limitations are clear. This shaped the decision to present measurements and flagged findings for physician review, rather than treating the generated report as a final diagnosis.</p>
+
+</div>
+</details>
+      </article>
+      <article class="proj-card" id="veritas" aria-labelledby="veritas-title">
+        <p class="project-kind">Applied NLP</p>
+        <h3 class="proj-title" id="veritas-title">Veritas: comparing claims in Lebanese news</h3>
+        <p class="proj-desc">Built a platform that retrieves related news coverage and compares claims across sources. The design evolved from a multi-model pipeline to an approach combining stored articles, event matching, and an API-based language model to produce comparisons with supporting context.</p>
+        <p class="project-learning"><strong>What I learned:</strong> Collecting articles on demand caused unpredictable delays. Storing recent articles first made the system more reliable. I learned that a useful AI application depends on how its data is collected as well as how it is analyzed.</p>
+        <div class="proj-tags"><span class="proj-tag">Flask</span><span class="proj-tag">MongoDB</span><span class="proj-tag">NLP</span></div>
+        <div class="artifact-links"><a href="https://github.com/sabaronnie/Veritas" target="_blank" rel="noopener noreferrer">Repository ↗</a></div>
+<details class="inline-details" id="veritas-details">
+<summary aria-label="Explore this project: Veritas: comparing claims in Lebanese news">Explore this project</summary>
+<div class="details-content">
+  <p>Veritas compares claims in Lebanese news coverage by retrieving related articles and presenting model-assisted analysis. The project evolved from separate claim-extraction, similarity, and bias models toward a single language-model API workflow supported by event matching and a database of recent articles.</p>
+  <h4>Documented request flow</h4>
+  <ol>
+    <li>A user submits an article URL. The backend extracts its text and publication metadata.</li>
+    <li>The system queries recently collected articles in MongoDB and narrows candidates by time and topical similarity.</li>
+    <li>An event-relevance score ranks comparison articles, which are serialized with the submitted article as structured data.</li>
+    <li>The language-model call compares claims against that retrieved material. The frontend presents the analysis and source context.</li>
+  </ol>
+  <h4>Why the system stores recent articles</h4>
+  <p>Early on-demand scraping encountered rate limits and unpredictable delays. A background collection process moved much of that variability out of the user’s request path. A limited recent-news window kept the stored material focused on the comparison task.</p>
+  <h4>What the output can support</h4>
+  <p>A comparison can identify agreement or contradiction in the material retrieved. Shared reporting can still repeat an error, and missing sources can change the result. This makes source context and clear uncertainty central to presenting the output.</p>
+
+</div>
+</details>
+      </article>
+      <article class="proj-card" id="conut" aria-labelledby="conut-title">
+        <p class="project-kind">12-hour hackathon</p>
+        <h3 class="proj-title" id="conut-title">Conut: AI support for retail operations</h3>
+        <p class="proj-desc">Helped build a prototype that connects retail analytics to a conversational interface. Its tools cover demand forecasting, product combinations, staffing, and expansion analysis, translating business questions into calls to specialized analysis modules.</p>
+        <p class="project-learning"><strong>What I learned:</strong> A prediction is useful when someone understands how to act on it. I learned to connect each business question to the right analysis and explain the result in terms that support a decision.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">FastAPI</span></div>
+        <div class="artifact-links"><a href="https://github.com/sabaronnie/AI-Driven-Cronut-CEO-Agent" target="_blank" rel="noopener noreferrer">Repository ↗</a></div>
+<details class="inline-details" id="conut-details">
+<summary aria-label="Explore this project: Conut: AI support for retail operations">Explore this project</summary>
+<div class="details-content">
+  <p>Prototype developed during a 12-hour hackathon.</p>
+  <p>The project connects a web chat interface to a FastAPI backend. A language model selects specialized analytics tools through a tool-use loop. Each tool handles a specific retail operations question.</p>
+  <div class="table-scroll" role="region" aria-label="Conut analytics methods" tabindex="0"><table>
+    <caption>Analytics methods</caption>
+    <thead><tr><th scope="col">Business question</th><th scope="col">Documented method</th></tr></thead>
+    <tbody><tr><th scope="row">Product combinations</th><td class="prose-cell">Apriori association rules</td></tr><tr><th scope="row">Demand forecasting</th><td class="prose-cell">An ensemble of polynomial ridge regression, Holt’s exponential smoothing, and weighted moving averages</td></tr><tr><th scope="row">Expansion feasibility</th><td class="prose-cell">K-means clustering and weighted scoring</td></tr><tr><th scope="row">Shift staffing</th><td class="prose-cell">Ridge regression with polynomial features</td></tr><tr><th scope="row">Beverage growth</th><td class="prose-cell">Business analytics and cross-sell analysis</td></tr><tr><th scope="row">Branch location</th><td class="prose-cell">Ridge regression and market-gap analysis</td></tr></tbody>
+  </table></div>
+  <h4>What I take from the project</h4>
+  <p>Building the prototype taught me to start with the decision a person needs to make. A forecast or recommendation becomes more useful when the user can understand the data behind it and the limits of the answer. The next step would be to test whether those recommendations improve decisions in day-to-day operations.</p>
+
+</div>
+</details>
+      </article>
+      <article class="proj-card" id="oect" aria-labelledby="oect-title">
+        <p class="project-kind">Undergraduate research · Sep 2025 – May 2026</p>
+        <h3 class="proj-title" id="oect-title">Machine learning for OECT sensing</h3>
+        <p class="proj-desc">Investigated an Organic Electrochemical Transistor (OECT) sensor for cancer-cell detection through simulation. Developed equivalent-circuit models and extracted features from impedance spectra for supervised classification of healthy and cancerous cells.</p>
+        <p class="project-learning"><strong>What I learned:</strong> I needed to understand what the sensor data represented before choosing inputs for the model. Circuit modeling helped me connect patterns in the signal to the physical behavior behind them.</p>
+        <div class="proj-tags"><span class="proj-tag">Circuit modeling</span><span class="proj-tag">Signal processing</span><span class="proj-tag">ML</span></div>
+<details class="inline-details" id="oect-details">
+<summary aria-label="Explore this project: Machine learning for OECT sensing">Explore this project</summary>
+<div class="details-content">
+  <p>Undergraduate research at AUB · September 2025–May 2026</p>
+  <p>I investigated an Organic Electrochemical Transistor sensor for cancer-cell detection through simulation. The workflow connected equivalent-circuit models to impedance spectra, parameter extraction, and supervised classification of healthy versus cancerous cells.</p>
+  <h4>What I learned</h4>
+  <p>Circuit models helped me understand what changes in a sensor signal could mean physically. I could then use that understanding to choose inputs for a machine-learning model. This taught me to study where the data comes from before deciding how to analyze it.</p>
+
+</div>
+</details>
+      </article>
+    </div>
+    <details class="project-more" id="additional-work">
+      <summary>More work in security, systems, and machine learning</summary>
+      <div class="additional-projects">
+        <article><h3>Explainable concept drift for HVAC cyberattacks</h3><p>Extended a convolutional autoencoder pipeline to investigate which features changed in time-series data, including the effect of a wider temporal kernel. This work connects anomaly detection with the need to explain changes in model inputs.</p></article>
+        <article><h3>Pipelined datapath for GRAND</h3><p>Simulated a pipeline for the GRAND error-correcting decoder in RISC-V assembly. Comparing the pipeline with its sequential baseline made instruction dependencies and the limits of parallel execution concrete.</p></article>
+        <article><h3>Windows Active Directory &amp; Linux CTFs</h3><p>Practiced reconnaissance, enumeration, and privilege escalation in controlled lab environments. My Cryptography &amp; Network Security course taught me to examine how systems protect access to information. I applied that thinking in the labs by tracing how permissions and configuration weaknesses could combine into an attack path.</p></article>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="education" aria-labelledby="education-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-ref">FIG.05</span>
+      <h2 class="section-title" id="education-title">Education &amp; skills</h2>
     </div>
     <div class="body-col">
       <div class="rail"></div>
@@ -512,7 +395,7 @@
             <span class="entry-date">08/2023 — 05/2027 (expected)</span>
           </div>
           <div class="entry-role">BE, Computer and Communications Engineering — GPA 3.8/4.0</div>
-          <div class="coursework"><b>Coursework:</b> Applied Machine Learning, AI Engineering &amp; Production, Cryptography &amp; Network Security, Data Structures &amp; Algorithm Analysis, Operating Systems, Computer Architecture, Computer Systems &amp; Networks, Object-Oriented Design, Software Engineering.</div>
+          <div class="coursework"><b>Coursework:</b> Introduction to Machine Learning, Neural Networks, AI Engineering &amp; Production, Cryptography &amp; Network Security, Data Structures &amp; Algorithm Analysis, Operating Systems, Computer Architecture, Computer Systems &amp; Networks, Object-Oriented Design, Software Engineering.</div>
         </div>
         <div class="entry">
           <div class="entry-top">
@@ -522,70 +405,18 @@
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-ref">FIG.03</span>
-      <h2 class="section-title">Experience</h2>
-    </div>
-    <div class="body-col">
-      <div class="rail"></div>
-      <div>
-
-        <div class="entry">
-          <div class="entry-top">
-            <span class="entry-org">Murex</span>
-            <span class="entry-date">Jun — Aug 2026</span>
-          </div>
-          <div class="entry-role">Software Engineering Intern, Global DEV Team · Beirut</div>
-          <p class="entry-meta">Contributed directly to MX.3, Murex's production trading and risk-management platform, working in two-week Agile sprints with daily standups. Served as Scrum Master for two sprints, running standups and presenting sprint statistics.</p>
-          <ul>
-            <li>Migrated legacy UI screens from a monolithic switch-statement event handler to a modular, one-handler-per-event framework, working around a change in how the screen refreshed after data updates.</li>
-            <li>Migrated 21 custom-built legacy container structures to modern C++ STL equivalents (vectors, sets, unordered maps) across the codebase, reverse-engineering undocumented runtime behavior along the way.</li>
-            <li>Designed and built a reusable LockAPI from scratch, offering timeout- and retry-based acquisition policies across three levels of abstraction, using <code>std::variant</code> to enforce explicit policy selection.</li>
-            <li>Shipped a client-requested "Break Clause Type" field in Murex's dynamic reporting tables, tracing the data model end-to-end and coordinating with QA and the requesting department to verify and release it.</li>
-          </ul>
-        </div>
-
-        <div class="entry">
-          <div class="entry-top">
-            <span class="entry-org">American University of Beirut</span>
-            <span class="entry-date">09/2025 — 05/2026</span>
-          </div>
-          <div class="entry-role">Undergraduate Researcher — Virtually Integrated Project, ML-Based OECT Cancer Cell Detection</div>
-          <ul>
-            <li>Designed and simulated an AI-integrated Organic Electrochemical Transistor (OECT) to generate impedance data for tumor detection.</li>
-            <li>Developed equivalent-circuit models to extract cell parameters and derive machine-learning features from impedance spectra.</li>
-            <li>Implemented machine-learning pipelines for supervised classification of healthy versus cancerous cells.</li>
-          </ul>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-ref">FIG.04</span>
-      <h2 class="section-title">Skills &amp; abilities</h2>
-    </div>
-    <div class="body-col">
-      <div class="rail"></div>
-      <div class="skills-grid">
+    <div id="skills" class="education-skills">
+      <h3>Skills &amp; abilities</h3>
+<div class="skills-grid">
         <div class="skill-group">
-          <h3>Programming</h3>
+          <h4>Programming</h4>
           <div class="chip-row">
             <span class="chip">Python</span><span class="chip">C++</span><span class="chip">Java</span>
             <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">React</span>
           </div>
         </div>
         <div class="skill-group">
-          <h3>Systems &amp; tools</h3>
+          <h4>Systems &amp; tools</h4>
           <div class="chip-row">
             <span class="chip">Flask</span><span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">MongoDB</span>
             <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">AWS</span><span class="chip">Git</span>
@@ -593,7 +424,7 @@
           </div>
         </div>
         <div class="skill-group">
-          <h3>Data &amp; ML</h3>
+          <h4>Data &amp; ML</h4>
           <div class="chip-row">
             <span class="chip">PyTorch</span><span class="chip">scikit-learn</span><span class="chip">pandas</span>
             <span class="chip">NumPy</span><span class="chip">matplotlib</span><span class="chip">MATLAB</span>
@@ -601,7 +432,11 @@
           </div>
         </div>
         <div class="skill-group">
-          <h3>Languages</h3>
+          <h4>Working with others</h4>
+          <p class="skill-note">Sprint facilitation and technical communication at Murex. Technical documentation and experiment design in my academic projects.</p>
+        </div>
+        <div class="skill-group">
+          <h4>Languages</h4>
           <div class="chip-row">
             <span class="chip">English — fluent</span><span class="chip">Arabic — fluent</span><span class="chip">French — conversational</span>
           </div>
@@ -611,43 +446,30 @@
   </div>
 </section>
 
-<section id="projects">
+<section id="highlights" aria-labelledby="highlights-title">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-ref">FIG.05</span>
-      <h2 class="section-title">Notable projects</h2>
+      <span class="section-ref">FIG.06</span>
+      <h2 class="section-title" id="highlights-title">Highlights &amp; growth</h2>
     </div>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-title">Cervical spine MRI morphometry &amp; degeneration analysis</div>
-        <p class="proj-desc">Built and deployed a medical imaging pipeline that analyzes cervical spine MRI scans, extracting vertebral and disc measurements from segmentation masks to generate automated Pfirrmann degeneration grading and structured medical reports.</p>
-        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span><span class="proj-tag">AWS</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-title">Veritas — misinformation detection platform</div>
-        <p class="proj-desc">Full-stack platform that flags misinformation in real time across Lebanese media, using NER, semantic similarity, and event extraction to decompose news into verifiable claims and expose contradictions across sources.</p>
-        <div class="proj-tags"><span class="proj-tag">Flask</span><span class="proj-tag">PyTorch</span><span class="proj-tag">JS</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-title">Explainable concept drift for HVAC cyber-attacks</div>
-        <p class="proj-desc">Extended a CNN-autoencoder pipeline for feature-level drift localization in time-series data, increasing the temporal kernel size to improve detection accuracy under complex drift scenarios by 80%.</p>
-        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">PyTorch</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-title">Pipelined datapath for GRAND</div>
-        <p class="proj-desc">Simulated a multi-stage pipeline for the GRAND error-correcting decoder, optimizing instruction-level parallelism for a 1.28× performance speedup over the non-pipelined baseline.</p>
-        <div class="proj-tags"><span class="proj-tag">RISC-V ASM</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-title">Conut retail intelligence — AI ops hackathon</div>
-        <p class="proj-desc">Built in a 12-hour hackathon: an AI system analyzing multi-branch retail transactions for demand forecasting, combo optimization, and shift staffing, with decision agents converting predictions into recommendations.</p>
-        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">OpenClaw</span></div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-title">Capture the flag — Windows AD &amp; Linux</div>
-        <p class="proj-desc">Ran recon, enumeration, credential abuse, lateral movement, and privilege escalation across Windows AD and Linux boxes, exploiting misconfigurations and AD delegation weaknesses.</p>
-        <div class="proj-tags"><span class="proj-tag">BloodHound</span><span class="proj-tag">Burp Suite</span><span class="proj-tag">Metasploit</span></div>
-      </div>
+    <p class="section-intro">These experiences have changed how I approach a problem: understand how it works, test the result carefully, and explain what I learned.</p>
+    <div class="highlights-list">
+      <article>
+        <span class="highlight-index" aria-hidden="true">01</span>
+        <div><h3>Understanding how software is used</h3><p>At Murex, I discovered that a design that worked in one situation did not always fit another. Expanding the LockAPI helped me become more flexible in my design choices. I now pay more attention to how existing code uses a feature before changing it.</p><a href="#internship">Internship reflection</a></div>
+      </article>
+      <article>
+        <span class="highlight-index" aria-hidden="true">02</span>
+        <div><h3>Adapting what I already know</h3><p>I used earlier handwriting-analysis work as a starting point for Arabic calligraphy. The new problem needed different checks, especially for dots and detached marks. I learned to build on previous experience while making room for what is different about a new task.</p><a href="#fyp">FYP methods &amp; results</a></div>
+      </article>
+      <article>
+        <span class="highlight-index" aria-hidden="true">03</span>
+        <div><h3>Looking beyond one score</h3><p>The MRI project showed me that a correct measurement does not automatically help identify a disease. The calligraphy project showed me that high overall accuracy can hide repeated mistakes. Both taught me to look closely at what a result means and where it can fail.</p><a href="artifacts/mri-research-paper.pdf" target="_blank" rel="noopener noreferrer" title="Opens in a new tab">MRI validation paper (PDF)</a></div>
+      </article>
+      <article>
+        <span class="highlight-index" aria-hidden="true">04</span>
+        <div><h3>What I want to improve next</h3><p>Debugging and breaking down difficult problems are strengths I want to keep developing. My next goal is to get better at designing how different parts of a system work together and testing them in real conditions. My current work at Murex and the FYP will help me build those skills for future work in AI and cybersecurity.</p><a href="#contact">Get in touch</a></div>
+      </article>
     </div>
   </div>
 </section>
@@ -655,7 +477,7 @@
 <section id="contact">
   <div class="wrap">
     <div class="section-head">
-      <span class="section-ref">FIG.06</span>
+      <span class="section-ref">FIG.07</span>
       <h2 class="section-title">Contact</h2>
     </div>
     <div class="contact-grid">
@@ -698,9 +520,10 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer>
-  <p>Ronnie Saba · Beirut, Lebanon</p>
+  <p>Ronnie Saba · Beirut, Lebanon · Updated November 2026</p>
 </footer>
 
 </body>

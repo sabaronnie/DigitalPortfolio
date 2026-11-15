@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="refresh" content="0; url=../index.html#projects">
+  <meta name="robots" content="noindex">
+  <title>Ronnie Saba | Portfolio</title>
+  <script>
+    const destinations = {
+      fyp: 'fyp-details',
+      murex: 'murex-details',
+      'murex-current': 'experience',
+      mri: 'mri-details',
+      veritas: 'veritas-details',
+      conut: 'conut-details',
+      oect: 'oect-details',
+      'additional-work': 'additional-work'
+    };
+    const destination = destinations[window.location.hash.slice(1)] || 'projects';
+    window.location.replace('../index.html#' + destination);
+  </script>
+</head>
+<body>
+  <p><a href="../index.html#projects">Open Ronnie Saba’s portfolio</a></p>
+</body>
+</html>
